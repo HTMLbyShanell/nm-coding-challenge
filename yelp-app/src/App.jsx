@@ -1,5 +1,5 @@
-import {useState} from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import {Switch, Route, useHistory} from 'react-router-dom';
 import Nav from './components/Nav';
 import Inputs from './components/Inputs';
 import Fetched from './components/Fetched';
@@ -19,9 +19,16 @@ const App = () => {
 
   const [fetchedVisible, setFetchedVisible] = useState(false);
 
+  const history = useHistory();
+  useEffect(() => {
+    if (fetchedVisible === false && submitting.food === '' && submitting.town === '') {
+      history.push('');
+    }
+  });
+
   return (
     <div className="App">
-      <p> Filler Text</p>
+      {}
 
       <Nav 
         setSubmitting={setSubmitting}
@@ -41,7 +48,7 @@ const App = () => {
       />
 
       {  
-        fetchedVisible === true && 
+        fetchedVisible === true && submitting.food !== '' && submitting.town !== '' &&
         <Fetched 
           submitting={submitting}
         />

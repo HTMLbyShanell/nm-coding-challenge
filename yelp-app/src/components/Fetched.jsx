@@ -1,48 +1,69 @@
-import {useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
-import queryString from 'query-string';
+import {useState, useEffect} from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-const Fetched = () => {
+console.log(process.env.REACT_APP_API_KEY)
 
-  const qs = useLocation();
-  //console.log(qs);
+const Fetched = ({submitting}) => {
 
-  const pathname = qs.pathname;
-  const {term, location} = queryString.parse(qs.search);  
-  //console.log(pathname);
-  //console.log(term);
-  //console.log(location);
-
-  const YELP = 'https://api.yelp.com/v3/businesses';     
-  const ENDPOINT = `${YELP}${pathname}?term=${term}&location=${location}`;     
-  //console.log(ENDPOINT);
-
-  const API_KEY = '';
+  const [dataFromYelp, setDataFromYelp] = useState([]);
 
   useEffect(() => {
     const fetchingYelpFx = async () => {
       try {
-        const raw_data = await fetch(ENDPOINT, {
-          headers: {
-            Authorization: `Bearer ${API_KEY}`,
-            Origin: 'localhost',
-            withCredentials: true
-          }
-        });
-        console.log(raw_data);
+        if (submitting.food !== '' && submitting.town !== '') {
+          const raw_data = await fetch('/api/yelp');
+          const json_data = await raw_data.json();
+          //console.log(json_data.businesses[0]);
+          setDataFromYelp(json_data.businesses);
+        }
       } catch(err) {
         console.error(err);
       }
     };
     fetchingYelpFx();
-  }, [ENDPOINT]);
+  }, [submitting]);
+
+  const businesses = dataFromYelp.map((i) => {
+
+    const location = i.location.display_address.map((address) => {
+      return (
+        <p key={uuidv4()} style={{fontWeight: 300}}>{address}</p>
+      )
+    });
+
+    let all_categories = 0;
+    const categories = i.categories.map((category) => {
+      all_categories++;
+      return (
+        <p key={uuidv4()} style={{color: '#0060ff'}} className="one-category">
+          {category.title}{all_categories === i.categories.length ? '.' : ','}
+        </p>
+      )
+    });
+
+    return (
+      <div key={uuidv4()} className="one-single-record">
+        <img src={i.image_url} alt=""/>
+        <div className="txt-data">
+          <p>{i.name}</p>
+          <p style={{color: '#ff0060'}}>
+            {i.rating}/5 ({i.review_count} {i.review_count === 1 ? 'review' : 'reviews'})
+          </p>
+          {location}
+          <div className="all-categories">
+            {categories}
+          </div>
+        </div>
+        {/* <br/> */}
+      </div>
+    )
+  });
 
   return (
     <div className="Fetched">
-      <p>this is FxComp `Fetched.jsx`</p>
-      
+      {businesses}
     </div>
   )
 };
 
-export default Fetched;
+export default Fetched; 
