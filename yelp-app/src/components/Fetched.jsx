@@ -1,3 +1,4 @@
+import React from 'react';
 import {useState, useEffect} from 'react';
 import { v4 as uuid4 } from 'uuid';
 import './Fetched.scss';
