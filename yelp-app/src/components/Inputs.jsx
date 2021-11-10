@@ -25,7 +25,9 @@ const Inputs = ({
     e.preventDefault();
     setSubmitting(entering);
     setFetchedVisible(true);
-    history.push(qs);
+    if (entering.food !== '' && entering.town !== '') {
+      history.push(qs);
+    }
     setEntering({
       food: '',
       town: ''
@@ -34,7 +36,7 @@ const Inputs = ({
 
   return (
     <div className="Inputs">
-      <p>Filler Text</p>
+      {}
 
       <input 
         type="text"

@@ -19,7 +19,7 @@ const Nav = ({
 
   return (
     <div className="Nav">
-      <p>Filler Text</p>
+      {/* <p>this is FxComp `Nav.jsx`</p> */}
       <ul>
         <li onClick={cleanInputsFx}><NavLink to="/">homepage</NavLink></li>
       </ul>
