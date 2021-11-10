@@ -1,0 +1,50 @@
+.Fetched {
+    margin-top: 20px;
+    margin-left: 40px;
+    padding-bottom: 20px;
+    
+    p {
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: rgb(82, 82, 82);
+    }
+  
+    img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+  
+    .one-single-record {
+      display: grid;
+      grid-template-columns: 150px auto;
+      grid-template-rows: 100%;
+      margin-bottom: 20px;
+      position: relative;
+    }
+  
+    .txt-data {
+      margin-left: 20px;
+    }
+  
+    .txt-data > p:nth-child(1) {
+      font-size: 24px;
+    }
+  
+    .txt-data > p:nth-child(2) {
+      font-size: 12px;
+    }
+  
+    .all-categories {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      bottom: 0px;
+    }
+  
+    .one-category {
+      margin-right: 3px;
+    }
+  
+  }

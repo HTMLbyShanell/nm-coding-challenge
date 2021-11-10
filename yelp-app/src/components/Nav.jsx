@@ -21,7 +21,7 @@ const Nav = ({
     <div className="Nav">
       {}
       <ul>
-        <li onClick={cleanInputsFx}><NavLink to="/">homepage</NavLink></li>
+        <li onClick={cleanInputsFx}><NavLink to="https://htmlbyshanell.com/">NM Coding Challenge</NavLink></li>
       </ul>
     </div>
   )

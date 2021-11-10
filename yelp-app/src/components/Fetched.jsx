@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import { v4 as uuid4 } from 'uuid';
+import './Fetched.scss';
 
 console.log(process.env.REACT_APP_API_KEY)
 

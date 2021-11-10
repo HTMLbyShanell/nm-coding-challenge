@@ -3,7 +3,7 @@ import {Routes, Route, useNavigate} from 'react-router-dom';
 import Nav from './components/Nav';
 import Inputs from './components/Inputs';
 import Fetched from './components/Fetched';
-import './App.css';
+import './App.scss';
 
 const App = () => {
 
