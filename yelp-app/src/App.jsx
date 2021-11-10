@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {Switch, Route, useHistory} from 'react-router-dom';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 import Nav from './components/Nav';
 import Inputs from './components/Inputs';
 import Fetched from './components/Fetched';
@@ -19,10 +19,10 @@ const App = () => {
 
   const [fetchedVisible, setFetchedVisible] = useState(false);
 
-  const history = useHistory();
+  const navigate = useNavigate();
   useEffect(() => {
     if (fetchedVisible === false && submitting.food === '' && submitting.town === '') {
-      history.push('');
+      navigate.push('');
     }
   });
 
@@ -36,9 +36,9 @@ const App = () => {
         setFetchedVisible={setFetchedVisible}
       /> 
 
-      <Switch>
+      <Routes>
         <Route exact path="/"></Route>
-      </Switch>
+      </Routes>
 
       <Inputs
         entering={entering}  

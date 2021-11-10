@@ -1,4 +1,4 @@
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const Inputs = ({
   entering, setEntering, setSubmitting, setFetchedVisible
@@ -19,14 +19,14 @@ const Inputs = ({
   };
 
   let qs = `/search?term=${entering.food}&location=${entering.town}`;
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const submittingFx = (e) => {
     e.preventDefault();
     setSubmitting(entering);
     setFetchedVisible(true);
     if (entering.food !== '' && entering.town !== '') {
-      history.push(qs);
+      navigate.push(qs);
     }
     setEntering({
       food: '',

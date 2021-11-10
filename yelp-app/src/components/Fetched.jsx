@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuid4 } from 'uuid';
 
 console.log(process.env.REACT_APP_API_KEY)
 
@@ -27,7 +27,7 @@ const Fetched = ({submitting}) => {
 
     const location = i.location.display_address.map((address) => {
       return (
-        <p key={uuidv4()} style={{fontWeight: 300}}>{address}</p>
+        <p key={uuid4()} style={{fontWeight: 300}}>{address}</p>
       )
     });
 
@@ -35,14 +35,14 @@ const Fetched = ({submitting}) => {
     const categories = i.categories.map((category) => {
       all_categories++;
       return (
-        <p key={uuidv4()} style={{color: '#0060ff'}} className="one-category">
+        <p key={uuid4()} style={{color: '#0060ff'}} className="one-category">
           {category.title}{all_categories === i.categories.length ? '.' : ','}
         </p>
       )
     });
 
     return (
-      <div key={uuidv4()} className="one-single-record">
+      <div key={uuid4()} className="one-single-record">
         <img src={i.image_url} alt=""/>
         <div className="txt-data">
           <p>{i.name}</p>
