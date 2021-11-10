@@ -38,7 +38,6 @@ const App = () => {
       /> 
 
       <Routes>
-        <Route exact path="/"></Route>
         <Route path="/Nav" component={Nav} />
         <Route path="/Inputs" component={Inputs} />
         <Route path="/Fetched" component={Fetched} />
